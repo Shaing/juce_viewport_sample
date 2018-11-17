@@ -8,7 +8,7 @@
 
 #include "MainComponent.h"
 
-#define test_cnt 20
+#define test_cnt 10
 //==============================================================================
 
 LabelListComponent::LabelListComponent()
@@ -18,8 +18,8 @@ LabelListComponent::LabelListComponent()
 		Label *portNum = new Label();
 		addAndMakeVisible(portNum);
 		portNum->setComponentID(String(i));
-		portNum->setText("Port " + (String)i, dontSendNotification);
-		portNum->setColour(Label::backgroundColourId, Colour (0x32ffffff));  
+		portNum->setText((String)i, dontSendNotification);
+        portNum->setColour(Label::backgroundColourId, Colours::black);
 		portNum->setColour(Label::outlineColourId, Colours::darkgrey);
 		l.add(portNum);
 	}
@@ -44,8 +44,8 @@ VLL::VLL()
 	v.setViewedComponent(&ll);
 
 	addAndMakeVisible(label);
-	label.setText("test", dontSendNotification);
-	label.setColour(Label::backgroundColourId, Colour (0x32ffffff));  
+	label.setText("test view port", dontSendNotification);
+    label.setColour(Label::backgroundColourId, Colours::darkblue);
 	label.setColour(Label::outlineColourId, Colours::darkgrey);
 }
 
@@ -85,7 +85,7 @@ void MainContentComponent::resized()
     // If you add any child components, this is where you should
     // update their positions.
 	juce::Rectangle<int> mainBounds(getLocalBounds()); // W, H
-	vll.setBounds(mainBounds.removeFromTop(getHeight() / 2));
+	vll.setBounds(mainBounds.removeFromTop(getHeight()));
 }
 
 bool MainContentComponent::keyPressed(const KeyPress &key)
